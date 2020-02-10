@@ -31,6 +31,14 @@ public class ComponentTest {
     }
 
     @Test
+    void refreshGrade() {
+        c1.addAssignment(a1);
+        assertEquals(80,c1.gradeOfComponent);
+        c1.addAssignment(a2);
+        assertEquals(85,c1.gradeOfComponent);
+    }
+
+    @Test
     void setWeightTest() {
         assertEquals(20, c1.getWeight());
         c1.setWeight(45);

@@ -9,13 +9,12 @@ public class Component {
     String componentName;
 
     //REQUIRES: percentage > 0
-    //EFFECTS: Contructs a component in a course with given weight
+    //EFFECTS: Contructs a component in a course with given weight (in percentage)
     public Component(double weight, String name) {
         componentName = name;
         listOfAssignments = new ArrayList<Assignment>();
         this.weight = weight;
         gradeOfComponent = 0;
-        //TODO: Implement way to calculate gradeOfComponent by finding the average score of assignments
     }
 
     //REQUIRES: assignment has to a new assignment, not a pre-existing one
@@ -23,6 +22,24 @@ public class Component {
     //EFFECTS: add a new assignment to the list of assignment in the component
     public void addAssignment(Assignment assignment) {
         this.listOfAssignments.add(assignment);
+        gradeOfComponent = refreshGrade();
+    }
+
+    private double refreshGrade() {
+        ArrayList<Double> temp = new ArrayList<>();
+        for (Assignment a: listOfAssignments) {
+            double score = a.score;
+            temp.add(score);
+        }
+
+        int size = temp.size();
+        double sumOfScores = 0;
+
+        for (Double d: temp) {
+            sumOfScores += d;
+        }
+
+        return sumOfScores / size;
     }
 
     //GETTERS AND SETTERS

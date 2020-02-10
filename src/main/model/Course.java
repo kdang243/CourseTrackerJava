@@ -12,7 +12,7 @@ public class Course {
     public Course(String name) {
         courseName = name;
         listOfComponents = new ArrayList<Component>();
-        finalGrade = 0;   //TODO: Implement way to get finalGrade by calculating the weighted average of the components
+        finalGrade = 0;
     }
 
     //REQUIRES: This must be a new component, not a pre-existing component in the course
@@ -20,6 +20,27 @@ public class Course {
     //EFFECTS: add a new component to the course
     public void addComponent(Component component) {
         this.listOfComponents.add(component);
+        finalGrade = refreshFinal();
+    }
+
+    private double refreshFinal() {
+
+        ArrayList<Double> temp = new ArrayList<>();
+
+        for (Component c: listOfComponents) {
+            double weight = c.weight / 100;
+            double grade = c.gradeOfComponent;
+            double part = weight * grade;
+            temp.add(part);
+        }
+
+        double answer = 0;
+
+        for (Double d: temp) {
+            answer += d;
+        }
+
+        return answer;
     }
 
     //GETTERS AND SETTERS
