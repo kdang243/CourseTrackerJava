@@ -36,10 +36,10 @@ grades correctly so I could accurately reflect on my progress.
 ## User Stories
 
 *User Stories Week 1*
-- As a user, I want to be able to create a new term with corresponding courses
-- As a user, I want to be able to create components for a course (with the weight of it in a course).
-- As a user, I want to be able to add new assignments to each components in a course.
-- As a user, I want to be able to add new grades for each assignments.
-- As a user, I want to be able to view courses that I have in the term.
+- As a user, I want to be able to create a new term in my academic history.
+- As a user, I want to be able to add a course to my term
+- As a user, I want to be able to add a component to a course
+- As a user, I want to be able to add a assignment to a component 
+- As a user, I want to be able to change an existing grade in my assignment
 - As a user, I want to be able to see my grade in the course so far.
 

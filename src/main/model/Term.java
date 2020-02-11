@@ -23,4 +23,8 @@ public class Term {
     public ArrayList<Course> getListOfCourse() {
         return listOfCourse;
     }
+
+    public String getTermName() {
+        return this.termName;
+    }
 }

@@ -38,4 +38,9 @@ public class TermTests {
         temp.add(co2);
         assertEquals(temp, t1.getListOfCourse());
     }
+
+    @Test
+    void getTermNameTest() {
+        assertEquals("WT1 2019-2020", t1.getTermName());
+    }
 }
