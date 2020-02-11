@@ -23,6 +23,8 @@ public class Course {
         finalGrade = refreshFinal();
     }
 
+    //MODIFIES: this
+    //EFFECTS: recalculates the finalGrade in the object
     private double refreshFinal() {
 
         ArrayList<Double> temp = new ArrayList<>();

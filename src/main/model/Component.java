@@ -25,6 +25,8 @@ public class Component {
         gradeOfComponent = refreshGrade();
     }
 
+    //MODIFIES: this
+    //EFFECTS: recalculates the grade of component in the object
     private double refreshGrade() {
         ArrayList<Double> temp = new ArrayList<>();
         for (Assignment a: listOfAssignments) {

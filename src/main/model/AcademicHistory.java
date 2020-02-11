@@ -12,7 +12,7 @@ public class AcademicHistory {
 
     //REQUIRES: Must be a new term, not a pre-existing term
     //MODIFIES: this
-    //EFFECTS: add a new term to the current this of terms
+    //EFFECTS: add a new term to the current list of terms
     public void addTerm(Term term) {
         this.listOfTerms.add(term);
     }
