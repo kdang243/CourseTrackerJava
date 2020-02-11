@@ -175,6 +175,7 @@ public class CourseTrackerApp {
         component.addAssignment(assignment);
         System.out.println("Assignment has been added!");
         System.out.println("Returning back to your Academic History");
+
     }
 
     private Component getComponent(String componentName, ArrayList<Component> components) {
