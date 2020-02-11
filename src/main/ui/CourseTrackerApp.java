@@ -6,8 +6,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.sun.tools.javac.util.StringUtils.toLowerCase;
-import static com.sun.tools.javac.util.StringUtils.toUpperCase;
 
 public class CourseTrackerApp {
 
@@ -109,7 +107,8 @@ public class CourseTrackerApp {
         System.out.println("The course has been added!");
         displayCourseOptions();
 
-        String key = toUpperCase(input.next());
+        String key = input.next();
+        key = key.toUpperCase();
 
         if (key.equals("E")) {
             process(key);
@@ -125,7 +124,8 @@ public class CourseTrackerApp {
         ArrayList<Course> courses = term.getListOfCourse();
 
         System.out.println("Which course is this component for?");
-        String courseName = toLowerCase(input.nextLine());
+        String courseName = input.nextLine();
+        courseName = courseName.toLowerCase();
 
         Course course = getCourse(courseName, courses);
 
@@ -139,7 +139,8 @@ public class CourseTrackerApp {
         course.addComponent(component);
         System.out.println("Component has been added!");
         displayAssignmentOptions();
-        String temp4 = toUpperCase(input.next());
+        String temp4 = input.next();
+        temp4 = temp4.toUpperCase();
 
         if (temp4.equals("G")) {
             process(temp4);
@@ -155,7 +156,8 @@ public class CourseTrackerApp {
         ArrayList<Course> courses = term.getListOfCourse();
 
         System.out.println("Which course is this assignment for?");
-        String courseName = toLowerCase(input.nextLine());
+        String courseName = input.nextLine();
+        courseName = courseName.toLowerCase();
 
         Course course = getCourse(courseName, courses);
         ArrayList<Component> components = course.getListOfComponents();
@@ -174,7 +176,7 @@ public class CourseTrackerApp {
         Assignment assignment = new Assignment(assignName,score);
         component.addAssignment(assignment);
         System.out.println("Assignment has been added!");
-        System.out.println("Returning back to your Academic History");
+        System.out.println("\nReturning back to your Academic History");
 
     }
 
