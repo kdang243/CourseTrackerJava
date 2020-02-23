@@ -10,7 +10,7 @@ public class AcademicHistory {
         listOfTerms = new ArrayList<Term>();
     }
 
-    //REQUIRES: Must be a new term, not a pre-existing term
+    //REQUIRES: Must be a new term, not a pre-existing term //TODO: implement try and catch for when user adds a term with the same name
     //MODIFIES: this
     //EFFECTS: add a new term to the current list of terms
     public void addTerm(Term term) {

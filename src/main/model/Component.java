@@ -17,7 +17,7 @@ public class Component {
         gradeOfComponent = 0;
     }
 
-    //REQUIRES: assignment has to a new assignment, not a pre-existing one
+    //REQUIRES: assignment has to a new assignment, not a pre-existing one //TODO: implement try and catch for when user instantiates a pre-existing assignment
     //MODIFIES: this
     //EFFECTS: add a new assignment to the list of assignment in the component
     public void addAssignment(Assignment assignment) {

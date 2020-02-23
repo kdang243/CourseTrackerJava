@@ -15,7 +15,7 @@ public class Course {
         finalGrade = 0;
     }
 
-    //REQUIRES: This must be a new component, not a pre-existing component in the course
+    //REQUIRES: This must be a new component, not a pre-existing component in the course //TODO: implements try and catch for when user tries to instantiates a pre-existing component
     //MODIFIES: this
     //EFFECTS: add a new component to the course
     public void addComponent(Component component) {
