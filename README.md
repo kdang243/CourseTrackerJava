@@ -41,5 +41,5 @@ grades correctly so I could accurately reflect on my progress.
 - As a user, I want to be able to add a component to a course
 - As a user, I want to be able to add a assignment to a component 
 - As a user, when I select the quit option, the program will save the academic history to file (as a course tracker should).
-- As a user, I want to have to option to restart a new academic history or to resume my previously saved one.
+- As a user, I want the previous data to be presented to me right away (display the user's academic history so they can interact)
 

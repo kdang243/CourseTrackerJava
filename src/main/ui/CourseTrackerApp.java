@@ -23,7 +23,7 @@ public class CourseTrackerApp {
         boolean keepGoing = true;
         String key = null;
         input = new Scanner(System.in);
-        ah = new AcademicHistory();
+        ah = new AcademicHistory(); //TODO: loaddata(), change user story so it dont break ur brain, take json file and change it back here.
 
         while (keepGoing) {
             displayMainOptions();
@@ -31,13 +31,15 @@ public class CourseTrackerApp {
             key = key.toUpperCase();
 
             if (key.equals("B")) {
-                keepGoing = false;
+                keepGoing = false; //TODO: write academic history into json here.
             } else {
                 process(key);
             }
         }
         System.out.println("\nBye! Hope to see you again soon!");
     }
+
+
 
     //EFFECTS: Displays the main options to the user
     private void displayMainOptions() {
