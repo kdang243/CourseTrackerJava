@@ -1,7 +1,12 @@
 package ui;
 
+import com.google.gson.Gson;
 import model.*;
+import persistance.Writer;
+import persistance.Reader;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +14,10 @@ import java.util.Scanner;
 
 public class CourseTrackerApp {
 
+    public static final String SAVE_PATH = "./data/saved";
     Scanner input;
     AcademicHistory ah;
+    AcademicHistory ahObject;
 
     //EFFECTS: runs the CourseTracker app
     public CourseTrackerApp() {
@@ -23,7 +30,7 @@ public class CourseTrackerApp {
         boolean keepGoing = true;
         String key = null;
         input = new Scanner(System.in);
-        ah = new AcademicHistory(); //TODO: loaddata(), change user story so it dont break ur brain, take json file and change it back here.
+        ah = loadData();
 
         while (keepGoing) {
             displayMainOptions();
@@ -31,7 +38,8 @@ public class CourseTrackerApp {
             key = key.toUpperCase();
 
             if (key.equals("B")) {
-                keepGoing = false; //TODO: write academic history into json here.
+                keepGoing = false;
+                autoSave();
             } else {
                 process(key);
             }
@@ -39,12 +47,42 @@ public class CourseTrackerApp {
         System.out.println("\nBye! Hope to see you again soon!");
     }
 
+    //MODIFIES: this
+    //EFFECTS: loads previously saved data into the app for the user
+    private AcademicHistory loadData() {
+        try {
+            ahObject = Reader.readAHistory(new File(SAVE_PATH));
+        } catch (IOException e) {
+            System.out.println("File not found");
+        }
+
+        return ahObject;
+    }
+
+
+    //EFFECTS: saves the state of the academic history to SAVE_PATH
+    private void autoSave() {
+        Gson gson = new Gson();
+        String json = gson.toJson(ah);
+
+        try {
+            Writer writer = new Writer(new File(SAVE_PATH));
+            writer.write(json);
+            writer.close();
+            System.out.println("File has been saved!");
+        } catch (IOException e) {
+            System.out.println("File not found");
+        }
+    }
 
 
     //EFFECTS: Displays the main options to the user
     private void displayMainOptions() {
         System.out.println("\nChoose an option!");
         System.out.println("\tA -> Add a new term!");
+        System.out.println("\tC -> Add a new course");
+        System.out.println("\tE -> Add a component");
+        System.out.println("\tG -> Add an assignment");
         System.out.println("\tB -> Quit");
     }
 
@@ -52,21 +90,21 @@ public class CourseTrackerApp {
     private void displayTermOptions() {
         System.out.println("\nWould you like to add a course?");
         System.out.println("\tC -> Add a course");
-        System.out.println("\tD -> Go back to your academic history");
+        System.out.println("\tD -> Go back to main menu");
     }
 
     //EFFECTS: Displays the course options to the user
     private void displayCourseOptions() {
         System.out.println("\nWould you like to add a component to this course?");
         System.out.println("\tE -> Add a component");
-        System.out.println("\tF -> Go back to academic history");
+        System.out.println("\tF -> Go back to main menu");
     }
 
     //EFFECTS: Displays the assignment options to the user
     private void displayAssignmentOptions() {
         System.out.println("\nWould you like to add an assignment to this component?");
         System.out.println("\tG -> Add an assignment");
-        System.out.println("\tH -> Go back to your academic history");
+        System.out.println("\tH -> Go back to main menu");
     }
 
     //MODIFIES: this
@@ -80,6 +118,8 @@ public class CourseTrackerApp {
             addComponent();
         } else if (s.equals("G")) {
             addAssignment();
+        } else {
+            System.out.println("That's not a valid option! Please try again...");
         }
     }
 
