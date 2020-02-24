@@ -1,0 +1,1 @@
+{"listOfTerms":[{"listOfCourse":[{"courseName":"Math 101","listOfComponents":[{"listOfAssignments":[{"name":"Midterm 1","score":80.0}],"weight":25.0,"gradeOfComponent":80.0,"componentName":"Midterm"}],"finalGrade":20.0}],"termName":"Term 1"}]}
