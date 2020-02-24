@@ -12,7 +12,8 @@ public class Term {
         listOfCourse = new ArrayList<Course>();
     }
 
-    //REQUIRES: Must be a new course, not a pre-existing course //TODO: implement try and catch for when user tries to instantiates a pre-existing course
+    //TODO: implement try and catch for when user tries to instantiates a pre-existing course
+    //REQUIRES: Must be a new course, not a pre-existing course
     //MODIFIES: this
     //EFFECTS: add a new course to the listOfCourses in the term
     public void addCourse(Course course) {
