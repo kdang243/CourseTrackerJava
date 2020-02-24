@@ -23,6 +23,10 @@ public class CourseTrackerApp {
     AcademicHistory ah;
     AcademicHistory ahObject;
 
+    Term term;
+    Course course;
+    Component component;
+
     //EFFECTS: runs the CourseTracker app
     public CourseTrackerApp() {
         runTracker();
@@ -92,38 +96,114 @@ public class CourseTrackerApp {
 
     //EFFECTS: Displays the term options to the user
     private void displayTermOptions() {
-        System.out.println("\nWould you like to add a course?");
-        System.out.println("\tC -> Add a course");
-        System.out.println("\tD -> Go back to main menu");
+        System.out.println("\nWould you like to add a course this term?");
+        System.out.println("\tI -> Add a course");
+        System.out.println("\tM -> Go back to main menu");
     }
 
     //EFFECTS: Displays the course options to the user
     private void displayCourseOptions() {
         System.out.println("\nWould you like to add a component to this course?");
-        System.out.println("\tE -> Add a component");
-        System.out.println("\tF -> Go back to main menu");
+        System.out.println("\tJ -> Add a component");
+        System.out.println("\tM -> Go back to main menu");
     }
 
     //EFFECTS: Displays the assignment options to the user
     private void displayAssignmentOptions() {
         System.out.println("\nWould you like to add an assignment to this component?");
-        System.out.println("\tG -> Add an assignment");
-        System.out.println("\tH -> Go back to main menu");
+        System.out.println("\tK -> Add an assignment");
+        System.out.println("\tM -> Go back to main menu");
     }
 
     //MODIFIES: this
     //EFFECTS: processes the user command
     private void process(String s) {
-        if (s.equals("A")) {
-            addTerm();
-        } else if (s.equals("C")) {
-            addCourse();
-        } else if (s.equals("E")) {
-            addComponent();
-        } else if (s.equals("G")) {
-            addAssignment();
-        } else {
-            System.out.println("That's not a valid option! Please try again...");
+        switch (s) {
+            case "A":
+                addTerm();
+                break;
+            case "C":
+                addCourse();
+                break;
+            case "E":
+                addComponent();
+                break;
+            case "G":
+                addAssignment();
+                break;
+            case "I":
+                addCourseToTerm();
+                break;
+            case "J":
+                addComponentToCourse();
+                break;
+            case "K":
+                addAssignmentToComp();
+            default:
+                System.out.println("That's not a valid option! Please try again...");
+                break;
+        }
+    }
+
+    private void addAssignmentToComp() {
+        System.out.println("What's the title of this assignment?");
+        input = new Scanner(System.in);
+        String assignName = input.nextLine();
+
+        System.out.println("What'd you score on this assignment?");
+        double score = input.nextDouble();
+
+        Assignment tempAssign = new Assignment(assignName,score);
+        try {
+            component.addAssignment(tempAssign);
+        } catch (PreExistingAssignException e) {
+            System.out.println("This assignment already exists for this component! Please try again");
+        }
+        System.out.println("Assignment has been added!\nReturning back to your Academic History");
+    }
+
+    private void addComponentToCourse() {
+        System.out.println("What's the name of this component?");
+        input = new Scanner(System.in);
+        String componentName = input.nextLine();
+
+        System.out.println("What's the weight of this component? (In percentage)");
+        double weight = input.nextDouble();
+
+        Component tempComponent = new Component(weight,componentName);
+        try {
+            course.addComponent(tempComponent);
+        } catch (PreExistingCompException e) {
+            System.out.println("This component already exists in this course! Please try again...");
+        }
+        System.out.println("Component has been added!");
+        displayAssignmentOptions();
+        String temp4 = input.next().toUpperCase();
+        component = tempComponent;
+
+        evalTemp(temp4);
+    }
+
+    private void addCourseToTerm() {
+        System.out.println("What's the name of this course?");
+        input = new Scanner(System.in);
+        String temp3 = input.nextLine();
+        temp3 = temp3.toLowerCase();
+        Course tempCourse = new Course(temp3);
+        try {
+            term.addCourse(tempCourse);
+        } catch (PreExistingCourseException e) {
+            System.out.println("This course already exists in this term! Please try again...");
+        }
+        System.out.println("The course has been added!");
+        displayCourseOptions();
+
+        String key = input.next();
+        key = key.toUpperCase();
+        course = tempCourse;
+
+        if (key.equals("J")) {
+            process(key);
         }
     }
 
@@ -133,9 +213,9 @@ public class CourseTrackerApp {
         System.out.println("What would you like to call this new term?");
         input = new Scanner(System.in);
         String temp = input.nextLine();
-        Term term = new Term(temp);
+        Term tempTerm = new Term(temp);
         try {
-            ah.addTerm(term);
+            ah.addTerm(tempTerm);
         } catch (PreExistingTermException e) {
             System.out.println("This term already exists! Please try again...");
         }
@@ -145,8 +225,9 @@ public class CourseTrackerApp {
         input = new Scanner(System.in);
         String key = input.next();
         key = key.toUpperCase();
+        term = tempTerm;
 
-        if (key.equals("C")) {
+        if (key.equals("I")) {
             process(key);
         }
     }
@@ -158,14 +239,14 @@ public class CourseTrackerApp {
         input = new Scanner(System.in);
         String temp = input.nextLine();
 
-        Term term = getTerm(temp);
+        Term tempTerm = getTerm(temp);
 
         System.out.println("What's the name of this course?");
         String temp3 = input.nextLine();
         temp3 = temp3.toLowerCase();
-        Course course = new Course(temp3);
+        Course tempCourse = new Course(temp3);
         try {
-            term.addCourse(course);
+            tempTerm.addCourse(tempCourse);
         } catch (PreExistingCourseException e) {
             System.out.println("This course already exists in this term! Please try again...");
         }
@@ -174,8 +255,9 @@ public class CourseTrackerApp {
 
         String key = input.next();
         key = key.toUpperCase();
+        course = tempCourse;
 
-        if (key.equals("E")) {
+        if (key.equals("J")) {
             process(key);
         }
     }
@@ -191,8 +273,7 @@ public class CourseTrackerApp {
         ArrayList<Course> courses = term.getListOfCourse();
 
         System.out.println("Which course is this component for?");
-        String courseName = input.nextLine();
-        courseName = courseName.toLowerCase();
+        String courseName = input.nextLine().toLowerCase();
 
         Course course = getCourse(courseName, courses);
 
@@ -202,22 +283,23 @@ public class CourseTrackerApp {
         System.out.println("What's the weight of this component? (In percentage)");
         double weight = input.nextDouble();
 
-        Component component = new Component(weight,componentName);
+        Component tempComponent = new Component(weight,componentName);
         try {
-            course.addComponent(component);
+            course.addComponent(tempComponent);
         } catch (PreExistingCompException e) {
             System.out.println("This component already exists in this course! Please try again...");
         }
         System.out.println("Component has been added!");
         displayAssignmentOptions();
         String temp4 = input.next().toUpperCase();
+        component = tempComponent;
 
         evalTemp(temp4);
     }
 
     //EFFECTS: process user input to avoid checkstyle
     private void evalTemp(String temp4) {
-        if (temp4.equals("G")) {
+        if (temp4.equals("K")) {
             process(temp4);
         }
     }
@@ -249,9 +331,9 @@ public class CourseTrackerApp {
         System.out.println("What'd you score on this assignment?");
         double score = input.nextDouble();
 
-        Assignment assignment = new Assignment(assignName,score);
+        Assignment tempAssign = new Assignment(assignName,score);
         try {
-            component.addAssignment(assignment);
+            component.addAssignment(tempAssign);
         } catch (PreExistingAssignException e) {
             System.out.println("This assignment already exists for this component! Please try again");
         }
