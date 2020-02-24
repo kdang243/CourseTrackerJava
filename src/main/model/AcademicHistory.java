@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.PreExistingTermException;
+
 import java.util.ArrayList;
 
 public class AcademicHistory {
@@ -10,12 +12,24 @@ public class AcademicHistory {
         listOfTerms = new ArrayList<Term>();
     }
 
-    //TODO: implement try and catch for when user adds a term with the same name
-    //REQUIRES: Must be a new term, not a pre-existing term
+
     //MODIFIES: this
     //EFFECTS: add a new term to the current list of terms
-    public void addTerm(Term term) {
-        this.listOfTerms.add(term);
+    public void addTerm(Term term) throws PreExistingTermException {
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (Term t: listOfTerms) {
+            String termName = t.getTermName();
+            temp.add(termName);
+        }
+
+        String newTermName = term.getTermName();
+
+        if (!temp.contains(newTermName)) {
+            this.listOfTerms.add(term);
+        } else {
+            throw new PreExistingTermException();
+        }
     }
 
     //GETTERS AND SETTERS

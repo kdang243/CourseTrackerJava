@@ -1,6 +1,10 @@
 package persistance;
 
 import com.google.gson.Gson;
+import exceptions.PreExistingAssignException;
+import exceptions.PreExistingCompException;
+import exceptions.PreExistingCourseException;
+import exceptions.PreExistingTermException;
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class WriterTest {
 
@@ -29,10 +34,26 @@ public class WriterTest {
         term = new Term("Term 1");
         ah = new AcademicHistory();
 
-        component.addAssignment(assignment);
-        course.addComponent(component);
-        term.addCourse(course);
-        ah.addTerm(term);
+        try {
+            component.addAssignment(assignment);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
+        try {
+            course.addComponent(component);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
+        try {
+            term.addCourse(course);
+        } catch (PreExistingCourseException e) {
+            fail();
+        }
+        try {
+            ah.addTerm(term);
+        } catch (PreExistingTermException e) {
+            fail();
+        }
     }
 
     @Test

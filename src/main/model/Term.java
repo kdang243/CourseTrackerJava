@@ -1,5 +1,8 @@
 package model;
 
+import exceptions.PreExistingCourseException;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Term {
@@ -12,12 +15,25 @@ public class Term {
         listOfCourse = new ArrayList<Course>();
     }
 
-    //TODO: implement try and catch for when user tries to instantiates a pre-existing course
-    //REQUIRES: Must be a new course, not a pre-existing course
+
     //MODIFIES: this
     //EFFECTS: add a new course to the listOfCourses in the term
-    public void addCourse(Course course) {
-        this.listOfCourse.add(course);
+    public void addCourse(Course course) throws PreExistingCourseException {
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (Course c: listOfCourse) {
+            String courseName = c.getCourseName();
+            temp.add(courseName);
+        }
+
+        String newCourseName = course.getCourseName();
+
+        if (!temp.contains(newCourseName)) {
+            this.listOfCourse.add(course);
+        } else {
+            throw new PreExistingCourseException();
+        }
+
     }
 
     //GETTERS AND SETTERS

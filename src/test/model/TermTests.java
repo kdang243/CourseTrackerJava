@@ -1,11 +1,13 @@
 package model;
 
+import exceptions.PreExistingCourseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TermTests {
 
@@ -23,16 +25,32 @@ public class TermTests {
     @Test
     void addCourseTest() {
         assertEquals(0, t1.listOfCourse.size());
-        t1.addCourse(co1);
+        try {
+            t1.addCourse(co1);
+        } catch (PreExistingCourseException e) {
+            fail();
+        }
         assertEquals(1, t1.listOfCourse.size());
-        t1.addCourse(co2);
+        try {
+            t1.addCourse(co2);
+        } catch (PreExistingCourseException e) {
+            fail();
+        }
         assertEquals(2, t1.listOfCourse.size());
     }
 
     @Test
     void getListOfCourseTest() {
-        t1.addCourse(co1);
-        t1.addCourse(co2);
+        try {
+            t1.addCourse(co1);
+        } catch (PreExistingCourseException e) {
+            fail();
+        }
+        try {
+            t1.addCourse(co2);
+        } catch (PreExistingCourseException e) {
+            fail();
+        }
         ArrayList<Course> temp = new ArrayList<>();
         temp.add(co1);
         temp.add(co2);

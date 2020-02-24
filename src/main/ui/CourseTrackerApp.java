@@ -1,6 +1,10 @@
 package ui;
 
 import com.google.gson.Gson;
+import exceptions.PreExistingAssignException;
+import exceptions.PreExistingCompException;
+import exceptions.PreExistingCourseException;
+import exceptions.PreExistingTermException;
 import model.*;
 import persistance.Writer;
 import persistance.Reader;
@@ -69,7 +73,7 @@ public class CourseTrackerApp {
             Writer writer = new Writer(new File(SAVE_PATH));
             writer.write(json);
             writer.close();
-            System.out.println("File has been saved!");
+            System.out.println("Your Academic History has been saved!");
         } catch (IOException e) {
             System.out.println("File not found");
         }
@@ -130,7 +134,11 @@ public class CourseTrackerApp {
         input = new Scanner(System.in);
         String temp = input.nextLine();
         Term term = new Term(temp);
-        ah.addTerm(term);
+        try {
+            ah.addTerm(term);
+        } catch (PreExistingTermException e) {
+            System.out.println("This term already exists! Please try again...");
+        }
         System.out.println("A new term has been added!");
         displayTermOptions();
 
@@ -156,7 +164,11 @@ public class CourseTrackerApp {
         String temp3 = input.nextLine();
         temp3 = temp3.toLowerCase();
         Course course = new Course(temp3);
-        term.addCourse(course);
+        try {
+            term.addCourse(course);
+        } catch (PreExistingCourseException e) {
+            System.out.println("This course already exists in this term! Please try again...");
+        }
         System.out.println("The course has been added!");
         displayCourseOptions();
 
@@ -191,12 +203,20 @@ public class CourseTrackerApp {
         double weight = input.nextDouble();
 
         Component component = new Component(weight,componentName);
-        course.addComponent(component);
+        try {
+            course.addComponent(component);
+        } catch (PreExistingCompException e) {
+            System.out.println("This component already exists in this course! Please try again...");
+        }
         System.out.println("Component has been added!");
         displayAssignmentOptions();
-        String temp4 = input.next();
-        temp4 = temp4.toUpperCase();
+        String temp4 = input.next().toUpperCase();
 
+        evalTemp(temp4);
+    }
+
+    //EFFECTS: process user input to avoid checkstyle
+    private void evalTemp(String temp4) {
         if (temp4.equals("G")) {
             process(temp4);
         }
@@ -213,8 +233,7 @@ public class CourseTrackerApp {
         ArrayList<Course> courses = term.getListOfCourse();
 
         System.out.println("Which course is this assignment for?");
-        String courseName = input.nextLine();
-        courseName = courseName.toLowerCase();
+        String courseName = input.nextLine().toLowerCase();
 
         Course course = getCourse(courseName, courses);
         ArrayList<Component> components = course.getListOfComponents();
@@ -231,10 +250,12 @@ public class CourseTrackerApp {
         double score = input.nextDouble();
 
         Assignment assignment = new Assignment(assignName,score);
-        component.addAssignment(assignment);
-        System.out.println("Assignment has been added!");
-        System.out.println("\nReturning back to your Academic History");
-
+        try {
+            component.addAssignment(assignment);
+        } catch (PreExistingAssignException e) {
+            System.out.println("This assignment already exists for this component! Please try again");
+        }
+        System.out.println("Assignment has been added!\nReturning back to your Academic History");
     }
 
     //REQUIRES: the list of components input can't be empty

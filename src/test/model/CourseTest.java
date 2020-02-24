@@ -1,11 +1,14 @@
 package model;
 
+import exceptions.PreExistingAssignException;
+import exceptions.PreExistingCompException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class CourseTest {
 
@@ -35,21 +38,49 @@ public class CourseTest {
     @Test
     void addComponentTest() {
         assertEquals(0, co1.listOfComponents.size());
-        co1.addComponent(c1);
+        try {
+            co1.addComponent(c1);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
         assertEquals(1, co1.listOfComponents.size());
-        co1.addComponent(c2);
+        try {
+            co1.addComponent(c2);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
         assertEquals(2, co1.listOfComponents.size());
     }
 
     @Test
     void refreshFinalTest() {
-        c3.addAssignment(a3);
-        c4.addAssignment(a1);
-        c4.addAssignment(a2);
+        try {
+            c3.addAssignment(a3);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
+        try {
+            c4.addAssignment(a1);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
+        try {
+            c4.addAssignment(a2);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         assertEquals(0, co1.finalGrade);
-        co1.addComponent(c3);
+        try {
+            co1.addComponent(c3);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
         assertEquals(54, co1.finalGrade);
-        co1.addComponent(c4);
+        try {
+            co1.addComponent(c4);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
         assertEquals(84,co1.finalGrade);
     }
 
@@ -68,8 +99,16 @@ public class CourseTest {
 
     @Test
     void getListOfComponents() {
-        co1.addComponent(c1);
-        co1.addComponent(c2);
+        try {
+            co1.addComponent(c1);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
+        try {
+            co1.addComponent(c2);
+        } catch (PreExistingCompException e) {
+            fail();
+        }
         ArrayList<Component> temp = new ArrayList<>();
         temp.add(c1);
         temp.add(c2);

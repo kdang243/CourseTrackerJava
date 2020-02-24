@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.PreExistingAssignException;
+
 import java.util.ArrayList;
 
 public class Component {
@@ -17,12 +19,22 @@ public class Component {
         gradeOfComponent = 0;
     }
 
-    //TODO: implement try and catch for when user instantiates a pre-existing assignment
-    //REQUIRES: assignment has to a new assignment, not a pre-existing one
+
     //MODIFIES: this
     //EFFECTS: add a new assignment to the list of assignment in the component
-    public void addAssignment(Assignment assignment) {
-        this.listOfAssignments.add(assignment);
+    public void addAssignment(Assignment assignment) throws PreExistingAssignException {
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (Assignment a: listOfAssignments) {
+            temp.add(a.getName());
+        }
+
+        if (!temp.contains(assignment.getName())) {
+            this.listOfAssignments.add(assignment);
+        } else {
+            throw new PreExistingAssignException();
+        }
+
         gradeOfComponent = refreshGrade();
     }
 

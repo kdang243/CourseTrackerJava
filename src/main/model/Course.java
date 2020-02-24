@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.PreExistingCompException;
+
 import java.util.ArrayList;
 
 public class Course {
@@ -15,12 +17,22 @@ public class Course {
         finalGrade = 0;
     }
 
-    //TODO: implements try and catch for when user tries to instantiates a pre-existing component
-    //REQUIRES: This must be a new component, not a pre-existing component in the course
+
     //MODIFIES: this
     //EFFECTS: add a new component to the course
-    public void addComponent(Component component) {
-        this.listOfComponents.add(component);
+    public void addComponent(Component component) throws PreExistingCompException {
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (Component c: listOfComponents) {
+            temp.add(c.getComponentName());
+        }
+
+        if (!temp.contains(component.getComponentName())) {
+            this.listOfComponents.add(component);
+        } else {
+            throw new PreExistingCompException();
+        }
+
         finalGrade = refreshFinal();
     }
 

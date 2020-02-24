@@ -1,11 +1,13 @@
 package model;
 
+import exceptions.PreExistingAssignException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ComponentTest {
 
@@ -24,17 +26,33 @@ public class ComponentTest {
 
     @Test
     void addAssignmentTest() {
-        c1.addAssignment(a1);
+        try {
+            c1.addAssignment(a1);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         assertEquals(1, c1.listOfAssignments.size());
-        c1.addAssignment(a2);
+        try {
+            c1.addAssignment(a2);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         assertEquals(2, c1.listOfAssignments.size());
     }
 
     @Test
     void refreshGrade() {
-        c1.addAssignment(a1);
+        try {
+            c1.addAssignment(a1);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         assertEquals(80,c1.gradeOfComponent);
-        c1.addAssignment(a2);
+        try {
+            c1.addAssignment(a2);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         assertEquals(85,c1.gradeOfComponent);
     }
 
@@ -53,8 +71,16 @@ public class ComponentTest {
 
     @Test
     void getListOfAssignmentsTest(){
-        c1.addAssignment(a1);
-        c1.addAssignment(a2);
+        try {
+            c1.addAssignment(a1);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
+        try {
+            c1.addAssignment(a2);
+        } catch (PreExistingAssignException e) {
+            fail();
+        }
         ArrayList<Assignment> temp = new ArrayList<>();
         temp.add(a1);
         temp.add(a2);
