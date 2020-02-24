@@ -12,6 +12,12 @@ public class ReaderTest {
 
     private static final String TEST_FILE_2 = "./data/testFile2";
     private AcademicHistory ahObject = null;
+    private Reader reader;
+
+    @Test
+    void testReader() {
+        reader = new Reader();
+    }
 
     @Test
     void testReadData() {
