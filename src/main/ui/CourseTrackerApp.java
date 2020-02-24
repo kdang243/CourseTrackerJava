@@ -131,6 +131,14 @@ public class CourseTrackerApp {
             case "G":
                 addAssignment();
                 break;
+            default:
+                System.out.println("That's not a valid option! Please try again...");
+                break;
+        }
+    }
+
+    private void processCont(String s) {
+        switch (s) {
             case "I":
                 addCourseToTerm();
                 break;
@@ -203,7 +211,7 @@ public class CourseTrackerApp {
         course = tempCourse;
 
         if (key.equals("J")) {
-            process(key);
+            processCont(key);
         }
     }
 
@@ -228,7 +236,7 @@ public class CourseTrackerApp {
         term = tempTerm;
 
         if (key.equals("I")) {
-            process(key);
+            processCont(key);
         }
     }
 
@@ -258,7 +266,7 @@ public class CourseTrackerApp {
         course = tempCourse;
 
         if (key.equals("J")) {
-            process(key);
+            processCont(key);
         }
     }
 
@@ -300,7 +308,7 @@ public class CourseTrackerApp {
     //EFFECTS: process user input to avoid checkstyle
     private void evalTemp(String temp4) {
         if (temp4.equals("K")) {
-            process(temp4);
+            processCont(temp4);
         }
     }
 
