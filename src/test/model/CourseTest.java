@@ -50,6 +50,11 @@ public class CourseTest {
             fail();
         }
         assertEquals(2, co1.listOfComponents.size());
+        try {
+            co1.addComponent(c2);
+        } catch (PreExistingCompException e) {
+
+        }
     }
 
     @Test

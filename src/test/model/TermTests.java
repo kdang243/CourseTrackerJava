@@ -37,6 +37,12 @@ public class TermTests {
             fail();
         }
         assertEquals(2, t1.listOfCourse.size());
+
+        try {
+            t1.addCourse(co2);
+        } catch (PreExistingCourseException e) {
+
+        }
     }
 
     @Test

@@ -38,6 +38,11 @@ public class ComponentTest {
             fail();
         }
         assertEquals(2, c1.listOfAssignments.size());
+        try {
+            c1.addAssignment(a2);
+        } catch (PreExistingAssignException e) {
+
+        }
     }
 
     @Test

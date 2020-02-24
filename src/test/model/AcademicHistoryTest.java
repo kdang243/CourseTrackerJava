@@ -37,6 +37,11 @@ public class AcademicHistoryTest {
             fail();
         }
         assertEquals(2, ah1.listOfTerms.size());
+        try {
+            ah1.addTerm(t2);
+        } catch (PreExistingTermException e) {
+
+        }
     }
 
     @Test
