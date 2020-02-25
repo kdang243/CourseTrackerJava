@@ -137,6 +137,8 @@ public class CourseTrackerApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: processes the commands that keeps continuity
     private void processCont(String s) {
         switch (s) {
             case "I":
@@ -153,6 +155,8 @@ public class CourseTrackerApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: add a new assignment to the new component that the user added
     private void addAssignmentToComp() {
         System.out.println("What's the title of this assignment?");
         input = new Scanner(System.in);
@@ -170,6 +174,8 @@ public class CourseTrackerApp {
         System.out.println("Assignment has been added!\nReturning back to your Academic History");
     }
 
+    //MODIFIES: this
+    //EFFECTS: add a new component to the new course that the user added
     private void addComponentToCourse() {
         System.out.println("What's the name of this component?");
         input = new Scanner(System.in);
@@ -192,6 +198,8 @@ public class CourseTrackerApp {
         evalTemp(temp4);
     }
 
+    //MODIFIES: this
+    //EFFECTS: add a new course to the new term that the user added
     private void addCourseToTerm() {
         System.out.println("What's the name of this course?");
         input = new Scanner(System.in);
