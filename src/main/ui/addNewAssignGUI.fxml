@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #002145#002145 #002145;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddNewAssignController">
+   <children>
+      <Text fill="WHITE" layoutX="117.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Course Tracker" textAlignment="CENTER">
+         <font>
+            <Font name="Baloo Da Regular" size="48.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="177.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which term would you like to add this assignment to?">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="whichTermBox" layoutX="220.0" layoutY="163.0" prefHeight="34.0" prefWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="171.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which course would you like to add this assignment to?">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="whichCourseBox" layoutX="221.0" layoutY="231.0" prefHeight="34.0" prefWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="157.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which component would you like to add this assignment to?">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="whichComponentBox" layoutX="220.0" layoutY="299.0" prefHeight="34.0" prefWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="177.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name  of Assignment">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="341.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grade recieved">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="assignName" layoutX="198.0" layoutY="380.0" prefHeight="45.0" prefWidth="83.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="assignGrade" layoutX="344.0" layoutY="380.0" prefHeight="45.0" prefWidth="83.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="addAssignEnter" layoutX="499.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#addAssignEnterClicked" text="Enter">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Button>
+      <Text fx:id="addAssignFeedback" fill="WHITE" layoutX="423.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" textAlignment="CENTER" wrappingWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <Button fx:id="addAssignBackToMainMenu" layoutX="27.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#addAssignBackToMainMenuClicked" text="Back to Main Menu">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

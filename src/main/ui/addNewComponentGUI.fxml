@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #002145#002145 #002145;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddNewComponentController">
+   <children>
+      <Text fill="WHITE" layoutX="117.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Course Tracker" textAlignment="CENTER">
+         <font>
+            <Font name="Baloo Da Regular" size="48.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="177.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which term would you like to add this component to?">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="whichTermBox" layoutX="219.0" layoutY="165.0" prefHeight="34.0" prefWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="162.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which course would you like to add this component to?">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="whichCourseBox" layoutX="220.0" layoutY="238.0" prefHeight="34.0" prefWidth="200.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="162.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name  of Component">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="359.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight of Component">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="componentNameBox" layoutX="151.0" layoutY="310.0" prefHeight="45.0" prefWidth="138.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="componentWeightBox" layoutX="351.0" layoutY="310.0" prefHeight="45.0" prefWidth="138.0">
+         <font>
+            <Font name="Baloo Da Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Text fx:id="addComponentFeedback" fill="WHITE" layoutX="206.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" textAlignment="CENTER" wrappingWidth="224.88623046875">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Text>
+      <Button fx:id="addComponentEnter" layoutX="293.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#addComponentEnterClicked" text="Enter">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="addComponentBackToMainMenu" layoutX="28.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#addComponentBackToMainMenuClicked" text="Back to Main Menu">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="addNewAssignment" layoutX="375.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#addNewAssignmentClicked" text="Add an assignment to your component!">
+         <font>
+            <Font name="Baloo Da Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

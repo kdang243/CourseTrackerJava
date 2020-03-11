@@ -45,6 +45,28 @@ public class AcademicHistoryTest {
     }
 
     @Test
+    void removeTermTest() {
+        assertEquals(0, ah1.listOfTerms.size());
+        try {
+            ah1.addTerm(t1);
+        } catch (PreExistingTermException e) {
+            fail();
+        }
+        assertEquals(1, ah1.listOfTerms.size());
+        try {
+            ah1.addTerm(t2);
+        } catch (PreExistingTermException e) {
+            fail();
+        }
+        assertEquals(2, ah1.listOfTerms.size());
+        assertEquals(t1, ah1.getListOfTerms().get(0));
+        assertEquals(t2, ah1.getListOfTerms().get(1));
+        ah1.removeTerm("WT1 2018-2019");
+        assertEquals(t2, ah1.getListOfTerms().get(0));
+
+    }
+
+    @Test
     void getListOfTermsTest() {
         try {
             ah1.addTerm(t1);

@@ -32,6 +32,20 @@ public class AcademicHistory {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes a term with name in the current list of terms
+    public void removeTerm(String name) {
+        ArrayList<String> temp = new ArrayList<>();
+
+        for (Term t: listOfTerms) {
+            String termName = t.getTermName();
+            temp.add(termName);
+        }
+
+        int index = temp.indexOf(name);
+        listOfTerms.remove(index);
+    }
+
     //GETTERS AND SETTERS
     public ArrayList<Term> getListOfTerms() {
         return listOfTerms;
