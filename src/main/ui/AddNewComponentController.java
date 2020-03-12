@@ -18,6 +18,7 @@ import model.Term;
 import persistance.Reader;
 import persistance.Writer;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,7 +56,8 @@ public class AddNewComponentController {
     public Text addComponentFeedback;
 
     @FXML
-    void addComponentEnterClicked(MouseEvent event) {
+    void addComponentEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        clickNoise();
         ah = loadData();
 
         String termName = whichTermBox.getText();
@@ -80,7 +82,8 @@ public class AddNewComponentController {
     }
 
     @FXML
-    void addComponentBackToMainMenuClicked(MouseEvent event) throws IOException {
+    void addComponentBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
 
@@ -92,7 +95,8 @@ public class AddNewComponentController {
     }
 
     @FXML
-    void addNewAssignmentClicked(MouseEvent event) throws IOException {
+    void addNewAssignmentClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent addNewAssignmentView = FXMLLoader.load(getClass().getResource("addNewAssignGUI.fxml"));
         Scene addNewAssignmentScene = new Scene(addNewAssignmentView);
 
@@ -155,5 +159,13 @@ public class AddNewComponentController {
 
         int index = temp.indexOf(courseName);
         return courses.get(index);
+    }
+
+    private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File f = new File("./data/Click.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
     }
 }

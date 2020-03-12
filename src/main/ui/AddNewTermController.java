@@ -16,6 +16,7 @@ import model.Term;
 import persistance.Reader;
 import persistance.Writer;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class AddNewTermController {
     public Button addNewCourse;
 
     @FXML
-    void addTermEnterClicked(MouseEvent event) {
+    void addTermEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        clickNoise();
         ah = loadData(); //loads the data that we want to work on.
 
         String termName = termNameBox.getText();
@@ -61,7 +63,8 @@ public class AddNewTermController {
 
 
     @FXML
-    void addTermBackToMainMenuClicked(MouseEvent event) throws IOException {
+    void addTermBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
 
@@ -73,7 +76,8 @@ public class AddNewTermController {
     }
 
     @FXML
-    void addNewCourseToTermClicked(MouseEvent event) throws IOException {
+    void addNewCourseToTermClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent addNewCourseView = FXMLLoader.load(getClass().getResource("addNewCourseGUI.fxml"));
         Scene addNewCourseScene = new Scene(addNewCourseView);
 
@@ -109,5 +113,12 @@ public class AddNewTermController {
         }
     }
 
+    private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File f = new File("./data/Click.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+    }
 
 }

@@ -15,6 +15,7 @@ import model.*;
 import persistance.Reader;
 import persistance.Writer;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class AddNewAssignController {
     public Text addAssignFeedback;
 
     @FXML
-    void addAssignBackToMainMenuClicked(MouseEvent event) throws IOException {
+    void addAssignBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
 
@@ -64,7 +66,8 @@ public class AddNewAssignController {
     }
 
     @FXML
-    void addAssignEnterClicked(MouseEvent event) {
+    void addAssignEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        clickNoise();
         ah = loadData();
 
         String termName = whichTermBox.getText();
@@ -160,5 +163,13 @@ public class AddNewAssignController {
 
         int index = temp.indexOf(componentName);
         return components.get(index);
+    }
+
+    private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File f = new File("./data/Click.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
     }
 }

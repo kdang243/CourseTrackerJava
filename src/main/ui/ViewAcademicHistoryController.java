@@ -8,15 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import model.AcademicHistory;
 import model.Term;
 import persistance.Reader;
 import persistance.Writer;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +41,11 @@ public class ViewAcademicHistoryController {
     public Button ahRemoveTerm;
 
     @FXML
-    void ahRemoveTermClicked(MouseEvent event) {
+    public Button easterEgg;
+
+    @FXML
+    void ahRemoveTermClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        clickNoise();
         ah = loadData();
         String selected = ahListView.getSelectionModel().getSelectedItem().toString();
 
@@ -61,7 +63,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahAddNewTermClicked(MouseEvent event) throws IOException {
+    void ahAddNewTermClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent addTermView = FXMLLoader.load(getClass().getResource("addNewTermGUI.fxml"));
         Scene addTermScene = new Scene(addTermView);
 
@@ -73,7 +76,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahBackToMainMenuClicked(MouseEvent event) throws IOException {
+    void ahBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+        clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
 
@@ -85,8 +89,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahEnterClicked(MouseEvent event) {
-
+    void ahEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        clickNoise();
         ah = loadData();
         ahListView.getItems().clear();
         ArrayList<String> termNames = getTermNames();
@@ -96,6 +100,21 @@ public class ViewAcademicHistoryController {
         }
 
     }
+
+    @FXML
+    void easterEggClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        easterNoise();
+    }
+
+    private void easterNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File f = new File("./data/easteregg.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+    }
+
+
 
 
     private ArrayList<String> getTermNames() {
@@ -134,4 +153,14 @@ public class ViewAcademicHistoryController {
             System.out.println("File not found");
         }
     }
+
+    private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File f = new File("./data/Click.wav");
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+    }
 }
+
+
