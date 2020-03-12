@@ -56,7 +56,8 @@ public class AddNewComponentController {
     public Text addComponentFeedback;
 
     @FXML
-    void addComponentEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    void addComponentEnterClicked(MouseEvent event)
+            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         clickNoise();
         ah = loadData();
 
@@ -82,7 +83,8 @@ public class AddNewComponentController {
     }
 
     @FXML
-    void addComponentBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addComponentBackToMainMenuClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
@@ -95,7 +97,8 @@ public class AddNewComponentController {
     }
 
     @FXML
-    void addNewAssignmentClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addNewAssignmentClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addNewAssignmentView = FXMLLoader.load(getClass().getResource("addNewAssignGUI.fxml"));
         Scene addNewAssignmentScene = new Scene(addNewAssignmentView);

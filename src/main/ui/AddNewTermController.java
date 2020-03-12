@@ -45,7 +45,8 @@ public class AddNewTermController {
     public Button addNewCourse;
 
     @FXML
-    void addTermEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    void addTermEnterClicked(MouseEvent event)
+            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         clickNoise();
         ah = loadData(); //loads the data that we want to work on.
 
@@ -63,7 +64,8 @@ public class AddNewTermController {
 
 
     @FXML
-    void addTermBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addTermBackToMainMenuClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
@@ -76,7 +78,8 @@ public class AddNewTermController {
     }
 
     @FXML
-    void addNewCourseToTermClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addNewCourseToTermClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addNewCourseView = FXMLLoader.load(getClass().getResource("addNewCourseGUI.fxml"));
         Scene addNewCourseScene = new Scene(addNewCourseView);

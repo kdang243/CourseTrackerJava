@@ -44,7 +44,8 @@ public class ViewAcademicHistoryController {
     public Button easterEgg;
 
     @FXML
-    void ahRemoveTermClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    void ahRemoveTermClicked(MouseEvent event)
+            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         clickNoise();
         ah = loadData();
         String selected = ahListView.getSelectionModel().getSelectedItem().toString();
@@ -63,7 +64,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahAddNewTermClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void ahAddNewTermClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addTermView = FXMLLoader.load(getClass().getResource("addNewTermGUI.fxml"));
         Scene addTermScene = new Scene(addTermView);
@@ -76,7 +78,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahBackToMainMenuClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void ahBackToMainMenuClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent rootView = FXMLLoader.load(getClass().getResource("CourseTrackerGUI.fxml"));
         Scene rootScene = new Scene(rootView);
@@ -89,7 +92,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void ahEnterClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    void ahEnterClicked(MouseEvent event)
+            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         clickNoise();
         ah = loadData();
         ahListView.getItems().clear();
@@ -102,7 +106,8 @@ public class ViewAcademicHistoryController {
     }
 
     @FXML
-    void easterEggClicked(MouseEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    void easterEggClicked(MouseEvent event)
+            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         easterNoise();
     }
 

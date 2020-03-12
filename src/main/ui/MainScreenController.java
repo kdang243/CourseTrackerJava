@@ -35,7 +35,8 @@ public class MainScreenController {
     public Button viewAcademicHistory;
 
     @FXML
-    void addTermClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addTermClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addTermView = FXMLLoader.load(getClass().getResource("addNewTermGUI.fxml"));
         Scene addTermScene = new Scene(addTermView);
@@ -48,7 +49,8 @@ public class MainScreenController {
     }
 
     @FXML
-    void addCourseClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addCourseClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addNewCourseView = FXMLLoader.load(getClass().getResource("addNewCourseGUI.fxml"));
         Scene addNewCourseScene = new Scene(addNewCourseView);
@@ -61,7 +63,8 @@ public class MainScreenController {
     }
 
     @FXML
-    void addComponentClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addComponentClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addNewComponentView = FXMLLoader.load(getClass().getResource("addNewComponentGUI.fxml"));
         Scene addNewComponentScene = new Scene(addNewComponentView);
@@ -74,7 +77,8 @@ public class MainScreenController {
     }
 
     @FXML
-    void addAssignClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void addAssignClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent addNewAssignmentView = FXMLLoader.load(getClass().getResource("addNewAssignGUI.fxml"));
         Scene addNewAssignmentScene = new Scene(addNewAssignmentView);
@@ -87,7 +91,8 @@ public class MainScreenController {
     }
 
     @FXML
-    void viewAcademicHistoryClicked(MouseEvent event) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    void viewAcademicHistoryClicked(MouseEvent event)
+            throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         clickNoise();
         Parent academicHistoryView = FXMLLoader.load(getClass().getResource("viewAcademicHistory.fxml"));
         Scene academicHistoryScene = new Scene(academicHistoryView);
