@@ -45,3 +45,30 @@ grades correctly so I could accurately reflect on my progress.
 - As a user, when I select the quit option, the program will save the academic history to file (as a course tracker should).
 - As a user, I want the previous data to be presented to me right away (display the user's academic history so they can interact)
 
+##Instructions for Grader
+
+Note: the program auto-loads and auto-saves after every "add X to Y", so when you press an enter button, this is done automatically by the code.
+
+First required event:
+1. To add a new term to your academic history, click the button labelled "Add a new term!" from the main menu which will bring you to a new window.
+2. Write what you want to call your new term in the text area and press the button that says enter in the new window. (A message should pop up saying 
+"A new term has been added!)
+3. Write the same exact name and press enter again and the message should say "this term already exists!". Click the back to main menu button to return to main menu.
+4. To add courses to a term, components to a course or assignment to a component, just press the corresponding button from the main
+menu page. (Note: This is the same process as the add X to Y, but the Y has to exist first before you add an X to it!)
+
+Second required event:
+5. In this program right now, you could only look at a list of terms in your academic history (I will add more in when I have time), to do this
+click on the button that's labeled "My Academic History" from main menu, then press the button that will load your academic history. Note that this requires you
+to have added at least 1 term to your academic history or nothing will show up.
+6. In the same window, to remove a term from your current academic history, select a term on the list shown and click the button that's labeled "Remove an Existing Term!"
+7. To add a new term to your academic history, press the button that's labeled "Add a New Term!", this step is the same as step 1 and 2 from the first required event.
+
+Note: In the My Academic History window, there is a button on the bottom right corner, this was just an easter egg I inserted for fun. I've disabled it, it does nothing.
+
+Audio component:
+8. For the audiovisual component, a click sound is played whenever you press a button in the program.
+
+Saving/Reload State:
+9. As mentioned on top of this list, the saving and reading component is done automatically whenever you press an enter button. 
+(You could verify this by adding a new term and viewing the list of terms right away without needing to press a "save" or "reload" button )

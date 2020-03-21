@@ -105,6 +105,7 @@ public class MainScreenController {
     }
 
     private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        //source: https://stackoverflow.com/questions/10591852/how-to-cast-from-inputstream-to-audioinputstream
         File f = new File("./data/Click.wav");
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();

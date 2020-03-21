@@ -105,6 +105,7 @@ public class ViewAcademicHistoryController {
 
     }
 
+    //This button just plays a funny sound clip (to me at least), it does nothing for the project itself.
     @FXML
     void easterEggClicked(MouseEvent event)
             throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -112,7 +113,8 @@ public class ViewAcademicHistoryController {
     }
 
     private void easterNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        File f = new File("./data/easteregg.wav");
+        //source: https://stackoverflow.com/questions/10591852/how-to-cast-from-inputstream-to-audioinputstream
+        File f = new File("./data/Click.wav");
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
         clip.open(audioIn);
@@ -160,6 +162,7 @@ public class ViewAcademicHistoryController {
     }
 
     private void clickNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        //source: https://stackoverflow.com/questions/10591852/how-to-cast-from-inputstream-to-audioinputstream
         File f = new File("./data/Click.wav");
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
