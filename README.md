@@ -72,3 +72,19 @@ Audio component:
 Saving/Reload State:
 9. As mentioned on top of this list, the saving and reading component is done automatically whenever you press an enter button. 
 (You could verify this by adding a new term and viewing the list of terms right away without needing to press a "save" or "reload" button )
+
+##Phase 4: Task 2
+
+For this task, I've chosen to do the first point (Test and design a class that is robust) because I already did this in phase 1 of the project.
+
+The classes that have a robust design that I've implemented myself are the Academic History class, the Term class, the Component class, and the Course class (which are all in the model package).
+
+The methods that are robust in these classes are the ones that adds an X to a Y.
+So in the Academic History class, the addTerm method is robust.
+In the Term class, the addCourse method is robust.
+In the Course class, the addComponent method is robust.
+In the Component class, the addAssignment method is robust.
+
+All of these methods don't accept a pre-existing X when adding X to Y. For example, a pre-existing term can't be added to your academic history.
+
+They are all tested correctly in their corresponding test classes as well.
