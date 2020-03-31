@@ -4,6 +4,8 @@ import exceptions.PreExistingTermException;
 
 import java.util.ArrayList;
 
+//TODO: Do the general requirements before finishing the final version.
+
 public class AcademicHistory {
     ArrayList<Term> listOfTerms;
 

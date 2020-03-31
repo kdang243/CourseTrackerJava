@@ -9,6 +9,7 @@ public class Component {
     double weight;
     double gradeOfComponent;
     String componentName;
+    ComponentGradeRefresher refresher;
 
     //REQUIRES: percentage > 0
     //EFFECTS: Contructs a component in a course with given weight (in percentage)
@@ -35,26 +36,8 @@ public class Component {
             throw new PreExistingAssignException();
         }
 
-        gradeOfComponent = refreshGrade();
-    }
-
-    //MODIFIES: this
-    //EFFECTS: recalculates the grade of component in the object
-    private double refreshGrade() {
-        ArrayList<Double> temp = new ArrayList<>();
-        for (Assignment a: listOfAssignments) {
-            double score = a.score;
-            temp.add(score);
-        }
-
-        int size = temp.size();
-        double sumOfScores = 0;
-
-        for (Double d: temp) {
-            sumOfScores += d;
-        }
-
-        return sumOfScores / size;
+        refresher = new ComponentGradeRefresher(listOfAssignments);
+        gradeOfComponent = refresher.refreshGrade();
     }
 
     //GETTERS AND SETTERS

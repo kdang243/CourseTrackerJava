@@ -9,6 +9,7 @@ public class Course {
     String courseName;
     ArrayList<Component> listOfComponents;
     double finalGrade;
+    CourseGradeRefresher refresher;
 
     //EFFECTS: Contructs a course with a list of components and the final grade
     public Course(String name) {
@@ -16,7 +17,6 @@ public class Course {
         listOfComponents = new ArrayList<Component>();
         finalGrade = 0;
     }
-
 
     //MODIFIES: this
     //EFFECTS: add a new component to the course
@@ -33,30 +33,10 @@ public class Course {
             throw new PreExistingCompException();
         }
 
-        finalGrade = refreshFinal();
+        refresher = new CourseGradeRefresher(listOfComponents);
+        finalGrade = refresher.refreshFinal();
     }
 
-    //MODIFIES: this
-    //EFFECTS: recalculates the finalGrade in the object
-    private double refreshFinal() {
-
-        ArrayList<Double> temp = new ArrayList<>();
-
-        for (Component c: listOfComponents) {
-            double weight = c.weight / 100;
-            double grade = c.gradeOfComponent;
-            double part = weight * grade;
-            temp.add(part);
-        }
-
-        double answer = 0;
-
-        for (Double d: temp) {
-            answer += d;
-        }
-
-        return answer;
-    }
 
     //GETTERS AND SETTERS
     public String getCourseName() {

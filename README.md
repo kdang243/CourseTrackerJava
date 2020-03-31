@@ -88,3 +88,29 @@ In the Component class, the addAssignment method is robust.
 All of these methods don't accept a pre-existing X when adding X to Y. For example, a pre-existing term can't be added to your academic history.
 
 They are all tested correctly in their corresponding test classes as well.
+
+##Phase 4: Task 3
+
+For this task, I decided to improve cohesion in two different classes as I couldn't find cases of high coupling in my code.
+
+Problem 1: Component Class' Cohesion.
+
+Although this is not a big part of the class, I still feel that the cohesion of the class isn't the best that it could've been. This is because
+there was a refreshGrade method that was responsible for updating the grade of the component whenever a new assignment was added. I felt that this specific method didn't belong
+in this class as the class was meant to take care of everything that was related to the component and the assignment associated with it not to deal with calculating the grade average of 
+assignments and how to display them in different situations. Furthermore, I want to be able to expand and add more functionality to the displaying of grades for components over this summer
+so I would've had to refactor this is improve cohesion anyways down the road.
+
+I fixed this cohesion problem by refactoring all the code belonging to the component's grade refresher into its own class while making minimal changes to the original component's class.
+The only thing I changed in the component class was that I now had to instantiate a new ComponentGradeRefresher before I refresh the grades.
+
+Problem 2: Course Class' Cohesion.
+
+This problem is very similar to problem 1, where I had a functionality in the class that refreshes the grade of the course whenever a new component is added to the course. The method that does this
+in the class does not technically fall under the single responsibility principle for the class so as a result, the cohesion of this specific class was lowered.
+
+To fix the cohesion problem in this class, I did the same thing as I did in the first problem of this task. I refactored all the code belonging to the course's grade refresher into its own class while making
+minimal changes to the original course class. I now just have to instantiate a new CourseGradeRefresher before I refresh the grade in the addComponent method. 
+
+
+
