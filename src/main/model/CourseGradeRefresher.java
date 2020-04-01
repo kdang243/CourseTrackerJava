@@ -2,9 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+//This class represents a grade refresher that manages the final grade for a course in a term.
 public class CourseGradeRefresher {
     ArrayList<Component> listOfComponents;
 
+    //EFFECTS: Contructs a grade refresher for a course.
     public CourseGradeRefresher(ArrayList<Component> listOfComponents) {
         this.listOfComponents = listOfComponents;
     }

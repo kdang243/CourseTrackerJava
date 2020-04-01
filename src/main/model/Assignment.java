@@ -1,5 +1,8 @@
 package model;
 
+
+//This class represents an assignment in a component. An assignment consist of the name of the assignment and the score
+// that the user received for the course. The score is used the calculate the grade for the component.
 public class Assignment {
     String name;
     double score;

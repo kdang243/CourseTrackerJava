@@ -4,6 +4,8 @@ import exceptions.PreExistingAssignException;
 
 import java.util.ArrayList;
 
+//This class represents a component that's inside of a course. A component consists of a list of assignment that the
+// user has completed and a grade which is used to calculate the final grade of the course.
 public class Component {
     ArrayList<Assignment> listOfAssignments;
     double weight;

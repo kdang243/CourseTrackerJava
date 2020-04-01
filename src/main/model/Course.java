@@ -4,6 +4,8 @@ import exceptions.PreExistingCompException;
 
 import java.util.ArrayList;
 
+//This class represents a course that's inside of one term. A course consists of a list of components that makes up a
+// course and a final grade for the course.
 public class Course {
 
     String courseName;

@@ -5,6 +5,8 @@ import exceptions.PreExistingCourseException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+//This class represents a school term inside the user's academic history. A term consists of a list of courses that
+// the user is taking in the term.
 public class Term {
     ArrayList<Course> listOfCourse;
     String termName;

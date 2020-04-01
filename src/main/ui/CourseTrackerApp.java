@@ -15,7 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+//This class was the app before implementing GUI, this is now not used in the program.
 public class CourseTrackerApp {
 
     public static final String SAVE_PATH = "./data/saved";
