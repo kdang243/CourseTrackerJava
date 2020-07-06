@@ -91,6 +91,11 @@ public class AddNewAssignController {
         try {
             component.addAssignment(assignment);
             addAssignFeedback.setText("Assignment has been added! Autosaving...");
+            whichComponentBox.clear();
+            whichCourseBox.clear();
+            whichTermBox.clear();
+            assignName.clear();
+            assignGrade.clear();
         } catch (PreExistingAssignException e) {
             addAssignFeedback.setText("This assignment already exists! Autosaving...");
         } finally {

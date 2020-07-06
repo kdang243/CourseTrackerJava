@@ -55,6 +55,7 @@ public class AddNewTermController {
         try {
             ah.addTerm(term);
             addTermFeedback.setText("Term has been added! Autosaving...");
+            termNameBox.clear();
         } catch (PreExistingTermException e) {
             addTermFeedback.setText("That term already exists, please try again. Autosaving...");
         } finally {

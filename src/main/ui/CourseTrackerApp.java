@@ -15,6 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Try to make this whole thing a mobile app. This class might be useful, again down the line.
 //This class was the app before implementing GUI, this is now not used in the program.
 public class CourseTrackerApp {
 

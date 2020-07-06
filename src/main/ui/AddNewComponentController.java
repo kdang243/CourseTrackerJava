@@ -75,6 +75,10 @@ public class AddNewComponentController {
         try {
             course.addComponent(component);
             addComponentFeedback.setText("Component has been added! Autosaving...");
+            whichTermBox.clear();
+            whichCourseBox.clear();
+            componentNameBox.clear();
+            componentWeightBox.clear();
         } catch (PreExistingCompException e) {
             addComponentFeedback.setText("This component already exists! Autosaving...");
         } finally {

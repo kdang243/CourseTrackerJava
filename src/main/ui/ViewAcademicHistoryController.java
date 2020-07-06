@@ -114,7 +114,7 @@ public class ViewAcademicHistoryController {
 
     private void easterNoise() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         //source: https://stackoverflow.com/questions/10591852/how-to-cast-from-inputstream-to-audioinputstream
-        File f = new File("./data/Click.wav");
+        File f = new File("./data/easteregg.wav");
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
         clip.open(audioIn);

@@ -62,6 +62,8 @@ public class AddNewCourseController {
         try {
             term.addCourse(course);
             addCourseFeedback.setText("Course has been added! Autosaving...");
+            whichTermBox.clear();
+            courseNameBox.clear();
         } catch (PreExistingCourseException e) {
             addCourseFeedback.setText("That course already exists in this term! Autosaving...");
         } finally {
